@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 red='\e[91m'
 green='\e[92m'
@@ -41,10 +41,10 @@ else
 fi
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
-old_id="23332333-2333-2333-2333-233boy233boy"
+old_id="23332333-2333-2333-2333-zorleizorlei"
 v2ray_server_config="/etc/v2ray/config.json"
-v2ray_client_config="/etc/v2ray/233blog_v2ray_config.json"
-backup="/etc/v2ray/233blog_v2ray_backup.txt"
+v2ray_client_config="/etc/v2ray/zorlei_v2ray_config.json"
+backup="/etc/v2ray/zorlei_v2ray_backup.txt"
 
 transport=(
 	TCP
@@ -274,7 +274,7 @@ ws_config() {
 	while :; do
 		echo
 		echo -e "请输入一个 $magenta正确的域名$none，一定一定一定要正确，不！能！出！错！"
-		read -p "(例如：233blog.com): " domain
+		read -p "(例如：zorlei.com): " domain
 		[ -z "$domain" ] && error && continue
 		echo
 		echo
@@ -463,8 +463,8 @@ shadowsocks_password_config() {
 
 	while :; do
 		echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
-		read -p "$(echo -e "(默认密码: ${magenta}233blog.com$none)"): " sspass
-		[ -z "$sspass" ] && sspass="233blog.com"
+		read -p "$(echo -e "(默认密码: ${magenta}zorlei.com$none)"): " sspass
+		[ -z "$sspass" ] && sspass="zorlei.com"
 		case $sspass in
 		*/*)
 			echo
@@ -696,89 +696,89 @@ install_v2ray() {
 	rm -rf /tmp/v2ray
 
 	if [[ $local_install ]]; then
-		mkdir -p /etc/v2ray/233boy/v2ray
-		cp -rf $(pwd)/* /etc/v2ray/233boy/v2ray
+		mkdir -p /etc/v2ray/zorlei/v2ray
+		cp -rf $(pwd)/* /etc/v2ray/zorlei/v2ray
 	else
-		git clone https://github.com/233boy/v2ray /etc/v2ray/233boy/v2ray
+		git clone https://github.com/zorlei/v2ray /etc/v2ray/zorlei/v2ray
 	fi
 
 	if [ $shadowsocks ]; then
 		if [[ $is_blocked_ad ]]; then
 			case $v2ray_transport_opt in
 			1)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/tcp_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/tcp_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			2)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/http_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/http_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			3)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/ws_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/ws_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			4)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/ws_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws_tls.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/ws_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws_tls.json"
 				;;
 			5 | 6 | 7 | 8)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/kcp_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/kcp_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			9)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/tcp_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/tcp_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			10)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/http_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/http_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			11)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/ws_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/ws_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			12 | 13 | 14 | 15)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/kcp_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/kcp_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			esac
 		else
 			case $v2ray_transport_opt in
 			1)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/tcp_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/tcp_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			2)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/http_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/http_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			3)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/ws_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			4)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws_tls.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/ws_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws_tls.json"
 				;;
 			5 | 6 | 7 | 8)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/kcp_ss.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/kcp_ss.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			9)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/tcp_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/tcp_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			10)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/http_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/http_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			11)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/ws_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			12 | 13 | 14 | 15)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/kcp_ss_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/kcp_ss_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			esac
 		fi
@@ -786,79 +786,79 @@ install_v2ray() {
 		if [[ $is_blocked_ad ]]; then
 			case $v2ray_transport_opt in
 			1)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/tcp.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/tcp.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			2)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/http.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/http.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			3)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/ws.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/ws.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			4)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/ws.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws_tls.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/ws.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws_tls.json"
 				;;
 			5 | 6 | 7 | 8)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/kcp.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/kcp.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			9)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/sblocked_hosts/erver/tcp_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/sblocked_hosts/erver/tcp_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			10)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/http_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/http_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			11)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/ws_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/ws_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			12 | 13 | 14 | 15)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/blocked_hosts/server/kcp_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/blocked_hosts/server/kcp_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			esac
 		else
 			case $v2ray_transport_opt in
 			1)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/tcp.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/tcp.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			2)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/http.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/http.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			3)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/ws.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			4)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws_tls.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/ws.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws_tls.json"
 				;;
 			5 | 6 | 7 | 8)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/kcp.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/kcp.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			9)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/tcp_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/tcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/tcp_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/tcp.json"
 				;;
 			10)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/http_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/http.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/http_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/http.json"
 				;;
 			11)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/ws_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/ws.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/ws_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/ws.json"
 				;;
 			12 | 13 | 14 | 15)
-				v2ray_server_config_file="/etc/v2ray/233boy/v2ray/config/server/kcp_dynamic.json"
-				v2ray_client_config_file="/etc/v2ray/233boy/v2ray/config/client/kcp.json"
+				v2ray_server_config_file="/etc/v2ray/zorlei/v2ray/config/server/kcp_dynamic.json"
+				v2ray_client_config_file="/etc/v2ray/zorlei/v2ray/config/client/kcp.json"
 				;;
 			esac
 		fi
@@ -943,34 +943,34 @@ del_port() {
 config() {
 	cp -f $v2ray_server_config_file $v2ray_server_config
 	cp -f $v2ray_client_config_file $v2ray_client_config
-	cp -f /etc/v2ray/233boy/v2ray/config/backup.txt $backup
-	cp -f /etc/v2ray/233boy/v2ray/v2ray.sh /usr/local/bin/v2ray
+	cp -f /etc/v2ray/zorlei/v2ray/config/backup.txt $backup
+	cp -f /etc/v2ray/zorlei/v2ray/v2ray.sh /usr/local/bin/v2ray
 	chmod +x /usr/local/bin/v2ray
 
 	local multi_port="${v2ray_dynamic_port_start_input}-${v2ray_dynamic_port_end_input}"
 	if [ $shadowsocks ]; then
 		case $v2ray_transport_opt in
 		1)
-			sed -i "28s/6666/$ssport/; 30s/chacha20-ietf/$ssciphers/; 31s/233blog.com/$sspass/" $v2ray_server_config
+			sed -i "28s/6666/$ssport/; 30s/chacha20-ietf/$ssciphers/; 31s/zorlei.com/$sspass/" $v2ray_server_config
 			;;
 		2)
-			sed -i "50s/6666/$ssport/; 52s/chacha20-ietf/$ssciphers/; 53s/233blog.com/$sspass/" $v2ray_server_config
+			sed -i "50s/6666/$ssport/; 52s/chacha20-ietf/$ssciphers/; 53s/zorlei.com/$sspass/" $v2ray_server_config
 			;;
 		3 | 4)
-			sed -i "31s/6666/$ssport/; 33s/chacha20-ietf/$ssciphers/; 34s/233blog.com/$sspass/" $v2ray_server_config
+			sed -i "31s/6666/$ssport/; 33s/chacha20-ietf/$ssciphers/; 34s/zorlei.com/$sspass/" $v2ray_server_config
 			;;
 		5 | 6 | 7 | 8)
-			sed -i "43s/6666/$ssport/; 45s/chacha20-ietf/$ssciphers/; 46s/233blog.com/$sspass/" $v2ray_server_config
+			sed -i "43s/6666/$ssport/; 45s/chacha20-ietf/$ssciphers/; 46s/zorlei.com/$sspass/" $v2ray_server_config
 			;;
 		9)
-			sed -i "31s/6666/$ssport/; 33s/chacha20-ietf/$ssciphers/; 34s/233blog.com/$sspass/; 42s/10000-20000/$multi_port/" $v2ray_server_config
+			sed -i "31s/6666/$ssport/; 33s/chacha20-ietf/$ssciphers/; 34s/zorlei.com/$sspass/; 42s/10000-20000/$multi_port/" $v2ray_server_config
 			;;
 		10)
-			sed -i "67s/6666/$ssport/; 69s/chacha20-ietf/$ssciphers/; 70s/233blog.com/$sspass/; 78s/10000-20000/$multi_port/" $v2ray_server_config
+			sed -i "67s/6666/$ssport/; 69s/chacha20-ietf/$ssciphers/; 70s/zorlei.com/$sspass/; 78s/10000-20000/$multi_port/" $v2ray_server_config
 			;;
 		*)
 
-			sed -i "34s/6666/$ssport/; 36s/chacha20-ietf/$ssciphers/; 37s/233blog.com/$sspass/; 45s/10000-20000/$multi_port/" $v2ray_server_config
+			sed -i "34s/6666/$ssport/; 36s/chacha20-ietf/$ssciphers/; 37s/zorlei.com/$sspass/; 45s/10000-20000/$multi_port/" $v2ray_server_config
 			;;
 		esac
 
@@ -1046,12 +1046,12 @@ config() {
 	sed -i "8s/2333/$v2ray_port/; 14s/$old_id/$uuid/" $v2ray_server_config
 
 	if [[ $v2ray_transport_opt -eq 4 ]]; then
-		sed -i "s/233blog.com/$domain/; 22s/2333/443/; 25s/$old_id/$uuid/" $v2ray_client_config
+		sed -i "s/zorlei.com/$domain/; 22s/2333/443/; 25s/$old_id/$uuid/" $v2ray_client_config
 	else
-		sed -i "s/233blog.com/$ip/; 22s/2333/$v2ray_port/; 25s/$old_id/$uuid/" $v2ray_client_config
+		sed -i "s/zorlei.com/$ip/; 22s/2333/$v2ray_port/; 25s/$old_id/$uuid/" $v2ray_client_config
 	fi
 
-	zip -q -r -j --password "233blog.com" /etc/v2ray/233blog_v2ray.zip $v2ray_client_config
+	zip -q -r -j --password "zorlei.com" /etc/v2ray/zorlei_v2ray.zip $v2ray_client_config
 
 	if [[ $cmd == "apt-get" ]]; then
 		cat >/etc/network/if-pre-up.d/iptables <<-EOF
@@ -1093,9 +1093,9 @@ backup_config() {
 		sed -i "23s/10000/$v2ray_dynamic_port_start_input/; 25s/20000/$v2ray_dynamic_port_end_input/" $backup
 	fi
 	if [ $shadowsocks ]; then
-		sed -i "31s/false/true/; 33s/6666/$ssport/; 35s/233blog.com/$sspass/; 37s/chacha20-ietf/$ssciphers/" $backup
+		sed -i "31s/false/true/; 33s/6666/$ssport/; 35s/zorlei.com/$sspass/; 37s/chacha20-ietf/$ssciphers/" $backup
 	fi
-	[ $v2ray_transport_opt == "4" ] && sed -i "27s/233blog.com/$domain/" $backup
+	[ $v2ray_transport_opt == "4" ] && sed -i "27s/zorlei.com/$domain/" $backup
 	[ $caddy ] && sed -i "29s/false/true/" $backup
 	[ $is_blocked_ad ] && sed -i "39s/false/true/" $backup
 }
@@ -1180,7 +1180,7 @@ show_config_info() {
 	if [[ $v2ray_transport_opt == "4" ]]; then
 		cat >/etc/v2ray/vmess_qr.json <<-EOF
 		{
-			"ps": "233blog_v2ray_${domain}",
+			"ps": "zorlei_v2ray_${domain}",
 			"add": "${domain}",
 			"port": "443",
 			"id": "${uuid}",
@@ -1194,7 +1194,7 @@ show_config_info() {
 	else
 		cat >/etc/v2ray/vmess_qr.json <<-EOF
 		{
-			"ps": "233blog_v2ray_${ip}",
+			"ps": "zorlei_v2ray_${ip}",
 			"add": "${ip}",
 			"port": "${v2ray_port}",
 			"id": "${uuid}",
@@ -1212,7 +1212,7 @@ show_config_info() {
 		else
 			ip_or_domain=$ip
 		fi
-		local shadowray_qr="vmess://$(echo -n "aes-128-cfb:${uuid}@${ip_or_domain}:${v2ray_port}" | base64)?remarks=233blog_v2ray_${ip_or_domain}&obfs=${obfs}"
+		local shadowray_qr="vmess://$(echo -n "aes-128-cfb:${uuid}@${ip_or_domain}:${v2ray_port}" | base64)?remarks=zorlei_v2ray_${ip_or_domain}&obfs=${obfs}"
 		echo "${shadowray_qr}" >/etc/v2ray/shadowray_qr.txt
 		sed -i 'N;s/\n//' /etc/v2ray/shadowray_qr.txt
 	fi
@@ -1222,10 +1222,10 @@ show_config_info() {
 	echo
 	echo -e " $yellow输入 ${cyan}v2ray${none} $yellow即可管理 V2Ray${none}"
 	echo
-	echo -e " ${yellow}V2Ray 客户端使用教程: https://233blog.com/post/20/$none"
+	echo -e " ${yellow}V2Ray 客户端使用教程: https://zorlei.com/post/20/$none"
 	echo
 	if [[ $v2ray_transport_opt == "4" && ! $caddy ]]; then
-		echo -e " $red警告！$none$yellow请自行配置 TLS...教程: https://233blog.com/post/19/$none"
+		echo -e " $red警告！$none$yellow请自行配置 TLS...教程: https://zorlei.com/post/19/$none"
 		echo
 	fi
 	echo "---------- V2Ray 配置信息 -------------"
@@ -1281,7 +1281,7 @@ show_config_info() {
 		fi
 	fi
 	if [ $shadowsocks ]; then
-		local ss="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64)#233blog_ss_${ip}"
+		local ss="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64)#zorlei_ss_${ip}"
 		echo
 		echo "---------- Shadowsocks 配置信息 -------------"
 		echo
@@ -1347,22 +1347,22 @@ get_qr_link() {
 	[1-4] | 9 | 10 | 11)
 		local ios_qr=true
 		local random3=$(echo $RANDOM-$RANDOM-$RANDOM | base64)
-		cat /etc/v2ray/shadowray_qr.txt | qrencode -s 50 -o /tmp/233blog_shadowray_qr.png
-		local link3=$(curl -s --upload-file /tmp/233blog_shadowray_qr.png "https://transfer.sh/${random3}_233blog_v2ray.png")
+		cat /etc/v2ray/shadowray_qr.txt | qrencode -s 50 -o /tmp/zorlei_shadowray_qr.png
+		local link3=$(curl -s --upload-file /tmp/zorlei_shadowray_qr.png "https://transfer.sh/${random3}_zorlei_v2ray.png")
 		;;
 	esac
 
 	if [[ $1 ]]; then
 		local vmess="vmess://$(cat /etc/v2ray/vmess_qr.json | base64)"
 		echo $vmess >/etc/v2ray/vmess.txt
-		cat /etc/v2ray/vmess.txt | qrencode -s 50 -o /tmp/233blog_v2ray.png
-		local ss="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64)#233blog_ss_${ip}"
-		echo "${ss}" >/tmp/233blog_shadowsocks.txt
-		cat /tmp/233blog_shadowsocks.txt | qrencode -s 50 -o /tmp/233blog_shadowsocks.png
+		cat /etc/v2ray/vmess.txt | qrencode -s 50 -o /tmp/zorlei_v2ray.png
+		local ss="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64)#zorlei_ss_${ip}"
+		echo "${ss}" >/tmp/zorlei_shadowsocks.txt
+		cat /tmp/zorlei_shadowsocks.txt | qrencode -s 50 -o /tmp/zorlei_shadowsocks.png
 		local random1=$(echo $RANDOM-$RANDOM-$RANDOM | base64)
 		local random2=$(echo $RANDOM-$RANDOM-$RANDOM | base64)
-		local link1=$(curl -s --upload-file /tmp/233blog_v2ray.png "https://transfer.sh/${random1}_233blog_v2ray.png")
-		local link2=$(curl -s --upload-file /tmp/233blog_shadowsocks.png "https://transfer.sh/${random2}_233blog_shadowsocks.png")
+		local link1=$(curl -s --upload-file /tmp/zorlei_v2ray.png "https://transfer.sh/${random1}_zorlei_v2ray.png")
+		local link2=$(curl -s --upload-file /tmp/zorlei_shadowsocks.png "https://transfer.sh/${random2}_zorlei_shadowsocks.png")
 		if [[ $link1 && $link2 ]]; then
 			echo
 			echo "---------- V2Ray 二维码链接 -------------"
@@ -1407,14 +1407,14 @@ get_qr_link() {
 			echo
 		fi
 
-		rm -rf /tmp/233blog_shadowsocks.png
-		rm -rf /tmp/233blog_shadowsocks.txt
+		rm -rf /tmp/zorlei_shadowsocks.png
+		rm -rf /tmp/zorlei_shadowsocks.txt
 	else
 		local vmess="vmess://$(cat /etc/v2ray/vmess_qr.json | base64)"
 		echo $vmess >/etc/v2ray/vmess.txt
-		cat /etc/v2ray/vmess.txt | qrencode -s 50 -o /tmp/233blog_v2ray.png
+		cat /etc/v2ray/vmess.txt | qrencode -s 50 -o /tmp/zorlei_v2ray.png
 		local random1=$(echo $RANDOM-$RANDOM-$RANDOM | base64)
-		local link1=$(curl -s --upload-file /tmp/233blog_v2ray.png "https://transfer.sh/${random1}_233blog_v2ray.png")
+		local link1=$(curl -s --upload-file /tmp/zorlei_v2ray.png "https://transfer.sh/${random1}_zorlei_v2ray.png")
 		if [[ $link1 ]]; then
 			echo
 			echo "---------- V2Ray 二维码链接 -------------"
@@ -1450,11 +1450,11 @@ get_qr_link() {
 			echo
 		fi
 	fi
-	rm -rf /tmp/233blog_v2ray.png
+	rm -rf /tmp/zorlei_v2ray.png
 	rm -rf /etc/v2ray/vmess_qr.json
 	rm -rf /etc/v2ray/vmess.txt
 	if [[ $ios_qr ]]; then
-		rm -rf /tmp/233blog_shadowray_qr.png
+		rm -rf /tmp/zorlei_shadowray_qr.png
 		rm -rf /etc/v2ray/shadowray_qr.txt
 	fi
 
@@ -1603,7 +1603,7 @@ uninstall() {
 			echo
 			echo "如果你觉得这个脚本有哪些地方不够好的话...请告诉我"
 			echo
-			echo "反馈问题: https://github.com/233boy/v2ray/issus"
+			echo "反馈问题: https://github.com/zorlei/v2ray/issus"
 			echo
 
 		elif [[ $is_uninstall_v2ray ]]; then
@@ -1652,7 +1652,7 @@ uninstall() {
 			echo
 			echo "如果你觉得这个脚本有哪些地方不够好的话...请告诉我"
 			echo
-			echo "反馈问题: https://github.com/233boy/v2ray/issus"
+			echo "反馈问题: https://github.com/zorlei/v2ray/issus"
 			echo
 
 		fi
@@ -1660,7 +1660,7 @@ uninstall() {
 		echo -e "
 		$red 大胸弟...你貌似毛有安装 V2Ray ....卸载个鸡鸡哦...$none
 
-		备注...仅支持卸载使用我(233blog.com)提供的 V2Ray 一键安装脚本
+		备注...仅支持卸载使用我(zorlei.com)提供的 V2Ray 一键安装脚本
 		" && exit 1
 	fi
 
@@ -1692,11 +1692,11 @@ esac
 clear
 while :; do
 	echo
-	echo "........... V2Ray 一键安装脚本 & 管理脚本 by 233blog.com .........."
+	echo "........... V2Ray 一键安装脚本 & 管理脚本 by zorlei.com .........."
 	echo
-	echo "帮助说明: https://233blog.com/post/16/"
+	echo "帮助说明: https://zorlei.com/post/16/"
 	echo
-	echo "搭建教程: https://233blog.com/post/17/"
+	echo "搭建教程: https://zorlei.com/post/17/"
 	echo
 	echo " 1. 安装"
 	echo
